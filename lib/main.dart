@@ -2,6 +2,10 @@ import 'dart:math';
 import 'dart:async';
 import 'package:flutter/material.dart';
 
+import 'package:kinetic/models/stock.dart';
+import 'package:kinetic/widgets/stock_item.dart';
+import 'package:kinetic/screens/stock_detail_screen.dart';
+
 void main() {
   runApp(App());
 }
@@ -254,8 +258,8 @@ class _HomeState extends State<Home> {
   void _startTicking() {
     final random = Random();
 
-    void _nextTick(){
-      int delay = 100 +random.nextInt(700);
+    void nextTick() {
+      int delay = 10 + random.nextInt(10);
       Timer(Duration(milliseconds: delay), () {
         int numberOfTicks = random.nextInt(10) + 1;
 
@@ -277,11 +281,11 @@ class _HomeState extends State<Home> {
           stockNotifiers[index].value = updated;
         }
 
-        _nextTick();
+        nextTick();
       });
     }
 
-    _nextTick();
+    nextTick();
   }
 
   @override
@@ -302,87 +306,27 @@ class _HomeState extends State<Home> {
           return ValueListenableBuilder<Stock>(
             valueListenable: notifier,
             builder: (context, stock, _) {
-              return _StockItem(
-                key: ValueKey(stock.symbol),
-                symbol: stock.symbol,
-                name: stock.name,
-                price: stock.price,
-                change: stock.change,
+              return GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => StockDetailScreen(stock: stock,notifier:notifier),
+                    ),
+                  );
+                },
+
+                child: StockItem(
+                  key: ValueKey(stock.symbol),
+                  symbol: stock.symbol,
+                  name: stock.name,
+                  price: stock.price,
+                  change: stock.change,
+                ),
               );
             },
           );
         },
-      ),
-    );
-  }
-}
-
-class Stock {
-  final String symbol;
-  final String name;
-  final double price;
-  final double change;
-
-  const Stock({
-    required this.symbol,
-    required this.name,
-    required this.price,
-    required this.change,
-  });
-}
-
-class _StockItem extends StatelessWidget {
-  const _StockItem({
-    super.key,
-    required this.symbol,
-    required this.name,
-    required this.price,
-    required this.change,
-  });
-
-  final String symbol;
-  final String name;
-  final double price;
-  final double change;
-
-  static const priceGreen = TextStyle(color: Colors.green);
-  static const priceRed = TextStyle(color: Colors.red);
-  static const changeColor = TextStyle(color: Colors.grey);
-  static const symbolStyle = TextStyle(fontWeight: FontWeight.bold);
-  static const nameStyle = TextStyle(fontSize: 12, color: Colors.grey);
-
-  @override
-  Widget build(BuildContext context) {
-    final isPositive = change >= 0;
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-
-      child: Row(
-        children: [
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(symbol, style: symbolStyle),
-                Text(name, style: nameStyle),
-              ],
-            ),
-          ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                price.toStringAsFixed(2),
-                style: isPositive ? priceGreen : priceRed,
-              ),
-              Text(
-                '(${isPositive ? '+' : ''}${change.toStringAsFixed(2)}%)',
-                style: changeColor,
-              ),
-            ],
-          ),
-        ],
       ),
     );
   }
