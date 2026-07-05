@@ -10,4 +10,13 @@ class Stock {
     required this.price,
     required this.change,
   });
+
+  Stock copyWith({String? symbol,String? name,double? price,double? change}){
+    return Stock(
+      symbol: symbol ?? this.symbol,
+      name: name ?? this.name,
+      price: price ?? this.price,
+      change: change ?? this.change,
+    );
+  }
 }

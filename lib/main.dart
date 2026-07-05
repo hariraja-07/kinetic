@@ -270,12 +270,7 @@ class _HomeState extends State<Home> {
           double newPrice = (current.price + priceDelta).clamp(1.0, 5000.0);
           double newChange = (random.nextDouble() - 0.5) * 4.0;
 
-          Stock updated = Stock(
-            symbol: current.symbol,
-            name: current.name,
-            price: newPrice,
-            change: newChange,
-          );
+          Stock updated = current.copyWith(price: newPrice,change: newChange);
 
           stockNotifiers[index].value = updated;
         }

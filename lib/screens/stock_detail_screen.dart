@@ -29,6 +29,8 @@ class _StockDetailScreenState extends State<StockDetailScreen> {
   final bidSide = OrderSide();
   final offerSide = OrderSide();
 
+  late final Timer _orderTimer;
+
   @override
   void initState() {
     super.initState();
@@ -40,16 +42,14 @@ class _StockDetailScreenState extends State<StockDetailScreen> {
     minPrice = widget.stock.price;
     maxPrice = widget.stock.price;
 
-    Timer.periodic(Duration(milliseconds: 150), (_){
-      bidSide.price.value = (widget.stock.price-Random().nextDouble()*10).toStringAsFixed(2);
+    _orderTimer = Timer.periodic(Duration(milliseconds: 150), (_){
+      bidSide.price.value = (widget.notifier.value.price-Random().nextDouble()*10).toStringAsFixed(2);
       bidSide.orders.value = Random().nextInt(500).toString();
       bidSide.qty.value = Random().nextInt(1000).toString();
 
-      offerSide.price.value = (Random().nextDouble()*10+widget.stock.price).toStringAsFixed(2);
+      offerSide.price.value = (Random().nextDouble()*10+widget.notifier.value.price).toStringAsFixed(2);
       offerSide.orders.value = Random().nextInt(500).toString();
       offerSide.qty.value = Random().nextInt(1000).toString();
-
-      
     });
   }
 
@@ -75,9 +75,10 @@ class _StockDetailScreenState extends State<StockDetailScreen> {
   @override
   void dispose() {
     widget.notifier.removeListener(_onUpdate);
-    super.dispose();
+    _orderTimer.cancel();
     bidSide.dispose();
     offerSide.dispose();
+    super.dispose();
   }
 
   List<FlSpot> _generateHistoricalSpots(double endPrice, int count) {
@@ -370,10 +371,10 @@ class OrderSide {
   final ValueNotifier<String> orders;
   final ValueNotifier<String> qty;
 
-  OrderSide({String Price = '00.00', String Order = '00.00', String Qty = '00'})
-    : price = ValueNotifier(Price),
-      orders = ValueNotifier(Order),
-      qty = ValueNotifier(Qty);
+  OrderSide({String price = '00.00', String order = '00.00', String qty = '00'})
+    : price = ValueNotifier(price),
+      orders = ValueNotifier(order),
+      qty = ValueNotifier(qty);
 
   void dispose() {
     price.dispose();
@@ -410,6 +411,7 @@ Widget _orders(String mode, OrderSide data) {
         ],
       ),
 
+      //hight
       TableRow(
         children: [
           SizedBox(height: 4),  // gap height
@@ -437,33 +439,7 @@ Widget _orders(String mode, OrderSide data) {
         ],
       ),
 
-      TableRow(
-        children: [
-          SizedBox(height: 4),  // gap height
-          SizedBox(height: 4),
-          SizedBox(height: 4),
-        ],
-      ),
-    
-      TableRow(
-        children: [
-          ValueListenableBuilder(
-            valueListenable: data.price,
-            builder: (_, value, __) => Text(value, style: textStyle),
-          ),
-
-          ValueListenableBuilder(
-            valueListenable: data.orders,
-            builder: (_, value, __) => Text(value, style: textStyle),
-          ),
-
-          ValueListenableBuilder(
-            valueListenable: data.qty,
-            builder: (_, value, __) => Text(value, style: textStyle),
-          ),
-        ],
-      ),
-
+      //hight
       TableRow(
         children: [
           SizedBox(height: 4),  // gap height
@@ -491,6 +467,35 @@ Widget _orders(String mode, OrderSide data) {
         ],
       ),
 
+      //hight
+      TableRow(
+        children: [
+          SizedBox(height: 4),  // gap height
+          SizedBox(height: 4),
+          SizedBox(height: 4),
+        ],
+      ),
+    
+      TableRow(
+        children: [
+          ValueListenableBuilder(
+            valueListenable: data.price,
+            builder: (_, value, __) => Text(value, style: textStyle),
+          ),
+
+          ValueListenableBuilder(
+            valueListenable: data.orders,
+            builder: (_, value, __) => Text(value, style: textStyle),
+          ),
+
+          ValueListenableBuilder(
+            valueListenable: data.qty,
+            builder: (_, value, __) => Text(value, style: textStyle),
+          ),
+        ],
+      ),
+
+      //hight
       TableRow(
         children: [
           SizedBox(height: 4),  // gap height
@@ -518,6 +523,7 @@ Widget _orders(String mode, OrderSide data) {
         ],
       ),
 
+      //hight
       TableRow(
         children: [
           SizedBox(height: 4),  // gap height
