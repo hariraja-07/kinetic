@@ -11,7 +11,8 @@ and why they rewrote their platform in Flutter.
 </p>
 
 <p align="center">
-  <img src="assets/screenshots/home.jpg" style="max-width: 320px; max-height: 640px; width: 100%;" alt="Home Screen">
+  <img src="assets/screenshots/home.jpg" style="max-width: 280px; max-height: 560px; width: 48%;" alt="Home Screen">
+  <img src="assets/gifs/working.gif" style="max-width: 280px; max-height: 560px; width: 48%;" alt="App Demo">
 </p>
 
 ## Why Flutter?
@@ -28,12 +29,6 @@ for high-frequency financial data. Flutter's direct canvas rendering
 and ValueNotifier made the same pattern simpler and more performant.
 
 This demo implements that pattern with zero third-party state management.
-
-## Demo
-
-<p align="center">
-  <img src="assets/gifs/working.gif" style="max-width: 320px; max-height: 640px; width: 100%;" alt="App Demo">
-</p>
 
 ## Features
 
