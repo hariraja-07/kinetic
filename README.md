@@ -11,7 +11,7 @@ and why they rewrote their platform in Flutter.
 </p>
 
 <p align="center">
-  <img src="assets/screenshots/home.jpg" style="max-width: 320px; width: 100%;" alt="Home Screen">
+  <img src="assets/screenshots/home.jpg" style="max-width: 320px; max-height: 640px; width: 100%;" alt="Home Screen">
 </p>
 
 ## Why Flutter?
@@ -32,7 +32,7 @@ This demo implements that pattern with zero third-party state management.
 ## Demo
 
 <p align="center">
-  <img src="assets/gifs/working.gif" style="max-width: 320px; width: 100%;" alt="App Demo">
+  <img src="assets/gifs/working.gif" style="max-width: 320px; max-height: 640px; width: 100%;" alt="App Demo">
 </p>
 
 ## Features
@@ -45,8 +45,8 @@ This demo implements that pattern with zero third-party state management.
 - Granular widget rebuilds
 
 <p align="center">
-  <img src="assets/screenshots/line_chart.jpg" style="max-width: 280px; width: 48%;" alt="Line Chart">
-  <img src="assets/screenshots/candle_chart.jpg" style="max-width: 280px; width: 48%;" alt="Candlestick Chart">
+  <img src="assets/screenshots/line_chart.jpg" style="max-width: 280px; max-height: 560px; width: 48%;" alt="Line Chart">
+  <img src="assets/screenshots/candle_chart.jpg" style="max-width: 280px; max-height: 560px; width: 48%;" alt="Candlestick Chart">
 </p>
 
 ## Architecture
@@ -67,11 +67,11 @@ ValueListenableBuilder<Stock>(
 ## Performance
 
 <p align="center">
-  <img src="assets/screenshots/performance_rebuild.png" style="max-width: 500px; width: 100%;" alt="Widget Rebuilds">
+  <img src="assets/screenshots/performance_rebuild.png" style="max-width: 500px; max-height: 600px; width: 100%;" alt="Widget Rebuilds">
 </p>
 
 <p align="center">
-  <img src="assets/screenshots/performance_fps.png" style="max-width: 500px; width: 100%;" alt="Frame Rendering">
+  <img src="assets/screenshots/performance_fps.png" style="max-width: 500px; max-height: 600px; width: 100%;" alt="Frame Rendering">
 </p>
 
 | Mode | FPS | Notes |
