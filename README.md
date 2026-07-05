@@ -11,8 +11,7 @@ and why they rewrote their platform in Flutter.
 </p>
 
 <p align="center">
-  <img src="assets/screenshots/home.jpg" style="max-width: 280px; max-height: 560px; width: 48%;" alt="Home Screen">
-  <img src="assets/gifs/working.gif" style="max-width: 280px; max-height: 560px; width: 48%;" alt="App Demo">
+  <img src="assets/gifs/working.gif" style="max-width: 320px; max-height: 640px; width: 100%;" alt="App Demo">
 </p>
 
 ## Why Flutter?
@@ -40,8 +39,9 @@ This demo implements that pattern with zero third-party state management.
 - Granular widget rebuilds
 
 <p align="center">
-  <img src="assets/screenshots/line_chart.jpg" style="max-width: 280px; max-height: 560px; width: 48%;" alt="Line Chart">
-  <img src="assets/screenshots/candle_chart.jpg" style="max-width: 280px; max-height: 560px; width: 48%;" alt="Candlestick Chart">
+  <img src="assets/screenshots/home.jpg" style="max-width: 220px; max-height: 440px; width: 32%;" alt="Home Screen">
+  <img src="assets/screenshots/line_chart.jpg" style="max-width: 220px; max-height: 440px; width: 32%;" alt="Line Chart">
+  <img src="assets/screenshots/candle_chart.jpg" style="max-width: 220px; max-height: 440px; width: 32%;" alt="Candlestick Chart">
 </p>
 
 ## Architecture
